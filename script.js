@@ -45,8 +45,11 @@ function convertCurrency(amount, price, symbol) {
 
     description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
     // exibir total 
-    let total = amount * price 
-    result.textContent =  total 
+    let total = amount * price
+    // let total = String(amount * price).replace(".",",")  // replace troca virgula por ponto ou 
+    total = formatCurrencyBRL(total).replace("R$","")  // mesma coisa de cima 
+    
+    result.textContent =  `${total} Reais` 
 
 
     // mostra o footer com resultado
