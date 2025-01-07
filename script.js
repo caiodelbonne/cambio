@@ -9,6 +9,8 @@ const amount = document.getElementById("amount");
 const currency = document.getElementById("currency"); // moeda
 const footer = document.querySelector("main footer") 
 const description = document.getElementById("description")
+const result = document.getElementById("result")
+
 
 // capt a entrada de dados do input
 amount.addEventListener("input", () => {
@@ -25,6 +27,7 @@ form.onsubmit = (event) => {
   switch (currency.value) {
     case "USD":
       convertCurrency(amount.value, USD, "US$");
+      break;
 
     case "EUR":
       convertCurrency(amount.value, EUR, "€");
@@ -41,12 +44,15 @@ function convertCurrency(amount, price, symbol) {
   try {
 
     description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
+    // exibir total 
+    let total = amount * price 
+    result.textContent =  total 
+
 
     // mostra o footer com resultado
     footer.classList.add("show-result")
 
-
-  } catch (error) {
+} catch (error) {
     // remove o footer com resultado da tela
 
     footer.classList.remove("show-result")
